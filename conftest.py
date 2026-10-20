@@ -1,19 +1,18 @@
 import pytest
 from selenium import webdriver
 
-BASE_URL = "https://stellarburgers.education-services.ru/"
+from constants import BASE_URL
 
 @pytest.fixture(params=["chrome", "firefox"])
 def driver(request):
-    browser = request.param
-    if browser == "chrome":
-        browser_driver = webdriver.Chrome()
+    if request.param == "chrome":
+        browser = webdriver.Chrome()
     else:
-        browser_driver = webdriver.Firefox()
-        
-    browser_driver.maximize_window()
-    browser_driver.get(BASE_URL)
+        browser = webdriver.Firefox()
 
-    yield browser_driver
+    browser.maximize_window()
+    browser.get(BASE_URL)
 
-    browser_driver.quit()
+    yield browser
+
+    browser.quit()

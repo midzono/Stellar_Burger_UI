@@ -6,6 +6,12 @@ from pages.order_feed_page import OrderFeedPage
 @allure.feature("Лента заказов")
 class TestOrderFeed:
 
+    @allure.title("Переход на вкладку «Лента заказов»")
+    def test_open_order_feed(self, driver):
+        main_page = MainPage(driver)
+        main_page.click_order_feed()
+        assert main_page.is_order_feed_open()
+
     @allure.title("Отображение счётчика заказов за всё время")
     def test_total_orders_counter_displayed(self, driver):
         main_page = MainPage(driver)

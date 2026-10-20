@@ -10,7 +10,7 @@ class OrderFeedPage(BasePage):
         return self.get_text(OrderFeedLocators.TODAY_ORDERS_COUNTER)
 
     def is_orders_in_progress_displayed(self):
-        return self.find_element(OrderFeedLocators.ORDERS_IN_PROGRESS).is_displayed()
+        return self.is_element_displayed(OrderFeedLocators.ORDERS_IN_PROGRESS)
 
     def get_orders_in_progress(self):
-        return self.driver.find_elements(*OrderFeedLocators.ORDERS_IN_PROGRESS_NUMBERS)
+        return self.find_elements(OrderFeedLocators.ORDERS_IN_PROGRESS_NUMBERS)
